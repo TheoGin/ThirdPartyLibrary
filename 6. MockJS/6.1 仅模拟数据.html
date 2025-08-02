@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Mock.js/1.0.0/mock-min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+      const fakeData = Mock.mock({
+        "name|2-5": "abc",
+        "arr|5-10": [
+          {
+            "id|+1": 1,
+            name: "@cname",
+            tel: /^1\d{10}/,
+            addr: "@city(true)", // Random.city( prefix? ) 随机生成一个（中国）市。可选。布尔值。指示是否生成所属的省。
+            avatar: "@image(120x90, #008c8c, #fff, testimage)", //Random.image( size?, background?, foreground?, format?, text? )
+          },
+        ],
+      });
+      console.log(fakeData);
+    </script>
+  </body>
+</html>
