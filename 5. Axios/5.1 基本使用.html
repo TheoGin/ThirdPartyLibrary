@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.10.0/axios.js"></script>
+    <script>
+      axios.get("https://study.duyiedu.com/api/herolist").then((resp) => {
+        console.log(resp); // {data: {…}, status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …}
+        console.log(resp.data); // {code: 0, msg: '', data: Array(126)}，resp.data为响应体的数据
+      });
+
+      axios
+        .get("https://study.duyiedu.com/api/user/exists", {
+          params: {
+            loginId: "abc",
+            specialChar: 'a&k=3'
+          },
+        })
+        .then((resp) => {
+          console.log(resp.data);
+        });
+
+        axios.post('https://study.duyiedu.com/api/user/reg', {
+            loginId: 'theo',
+            loginPwd: '123',
+            nickname: 'gin'
+        }).then(resp => {
+            console.log(resp.data);
+            // 第一次注册：{code: 0, msg: "", data: {id: "688dca7b5f8cc70c8a4ba2ab", loginId: "theo", nickname: "gin"}}
+            // 第二次：{code: 400, msg: "账号已存在", data: null}
+        })
+    </script>
+  </body>
+</html>
